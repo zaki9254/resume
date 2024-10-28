@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakiullah Sharf | PHP Developer Portfolio</title>
+    <style>
+        /* Basic styling for the portfolio */
+        body { font-family: Arial, sans-serif; color: #333; margin: 0; padding: 0; }
+        header { background-color: #4CAF50; padding: 20px; text-align: center; color: white; }
+        section { padding: 40px; }
+        .container { max-width: 1000px; margin: auto; }
+        .projects { display: flex; flex-wrap: wrap; gap: 20px; }
+        .project { flex: 1 1 calc(33.333% - 20px); background-color: #f4f4f4; padding: 20px; border-radius: 8px; }
+        .contact-form { max-width: 600px; margin: auto; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; }
+        footer { background-color: #333; color: white; text-align: center; padding: 10px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Zakiullah Sharf</h1>
+        <p>PHP Developer | Web Developer</p>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <p>Hello! I'm Zakiullah Sharf, a web developer with a focus on PHP development. With nearly 2 years of experience, I enjoy creating robust and efficient web applications and ensuring they are user-friendly and scalable.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2>Projects</h2>
+        <div class="projects">
+            <!-- Project 1 -->
+            <div class="project">
+                <h3>Project Name 1</h3>
+                <p>Description of the project. This could include the tech stack, features, and any interesting challenges you solved using PHP.</p>
+            </div>
+            <!-- Project 2 -->
+            <div class="project">
+                <h3>Project Name 2</h3>
+                <p>Description of the project. You could also link to the live project or GitHub repository here if available.</p>
+            </div>
+            <!-- Project 3 -->
+            <div class="project">
+                <h3>Project Name 3</h3>
+                <p>Description of the project, demonstrating your work as a developer in PHP and other relevant technologies.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2>Contact Me</h2>
+        <form class="contact-form" action="submit_form.php" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Zakiullah Sharf | PHP Developer</p>
+    </footer>
+
+</body>
+</html>
+```
+
+### PHP Contact Form (submit_form.php)
+
+To process the contact form, you can create a simple PHP file:
+
+```php
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $message = htmlspecialchars($_POST['message']);
+
+    $to = "your-email@example.com"; // Replace with your email
+    $subject = "New Contact Form Submission from $name";
+    $body = "Name: $name\nEmail: $email\n\nMessage:\n$message";
+
+    if (mail($to, $subject, $body)) {
+        echo "Message sent successfully!";
+    } else {
+        echo "Failed to send message.";
+    }
+}
+?>
+`
